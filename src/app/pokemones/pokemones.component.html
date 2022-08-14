@@ -1,0 +1,117 @@
+<div class="container card-body">
+  <h1 class="text-center">POKEDEX</h1>
+  <div class="row" *ngIf="DatosPokemones != []; else skeletonLoader">
+    <div class="col-4" *ngFor="let i of DatosPokemones; index as indice">
+
+      <div class="card mb-5 tarjeta" data-toggle="modal" data-target="#pokemonModal" (click)="asignaModal(indice)">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <img clas="img" [src]="i.imagen" alt="imagen de pokemon" style="height: 100%; transform: scale(1.05);">
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <h5 class="card-title">{{i.nombre | uppercase}}</h5>
+              <div class="row">
+                <p class="card-text col">Peso: {{i.peso}}</p>
+                <p class="card-text col">Altura: {{i.altura}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="pokemonModalLabel">{{DatosPokemones[modalIndex].nombre | uppercase}}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="datos">
+          <img clas="img imgmodal" [src]="DatosPokemones[modalIndex].imagen" alt="imagen de pokemon" style="height: 100%; grid-column: 1/2;
+          grid-row: 1/-1;">
+          <h5>Peso:</h5>
+          <p>{{DatosPokemones[modalIndex].peso}}</p>
+          <h5>Altura:</h5>
+          <p>{{DatosPokemones[modalIndex].altura}}</p>
+        </div>
+
+        <h5>Habilidades:</h5>
+        <ul>
+          <li *ngFor="let i of DatosPokemones[modalIndex].habilidades">{{i.ability.name}}</li>
+        </ul>
+
+        <h5>Aparicion en Juegos::</h5>
+        <ul>
+          <li *ngFor="let i of DatosPokemones[modalIndex].juegos">{{i.version.name}}</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btnCerrar" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<button class="botones boton1" (click)="obtener(Urlanterior)" [ngClass]="{'hide': this.Urlanterior == null}">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+    width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+    <g transform="rotate(-90 12 12)">
+      <path fill="white"
+        d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19z" />
+    </g>
+  </svg>
+</button>
+
+<button class="botones boton2" (click)="obtener(Urlsiguiente)">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+    width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+    <g transform="rotate(90 12 12)">
+      <path fill="white"
+        d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19z" />
+    </g>
+  </svg>
+</button>
+
+
+
+<!-- Skeleton loader -->
+<ng-template #skeletonLoader>
+  <div class="">
+    <div class="skeletonGroup">
+      <div class="skeleton" *ngFor="let n of numSequence(9)">
+
+        <ngx-skeleton-loader class="skeleton__img" appearance="line" animation="progress-dark" [theme]="{
+        width: '80%',
+        height: '90%',
+        'background-color':'#526275' }">
+        </ngx-skeleton-loader>
+
+        <ngx-skeleton-loader  appearance="line" animation="progress-dark"
+          [theme]="{'background-color':'#526275', 'margin-top':'10px' }"></ngx-skeleton-loader>
+        <ngx-skeleton-loader  appearance="line" animation="progress-dark"
+          [theme]="{'background-color':'#526275' }"></ngx-skeleton-loader>
+
+      </div>
+      <div>
+      
+    </div>
+    </div>
+  </div>
+
+</ng-template>
+
+<p class="copy">&#169; Brayan Vazquez 2022</p>
+

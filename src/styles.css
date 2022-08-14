@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap");
+
+body {
+  background-color: #192735;
+}
+
+h1 {
+  font-family: "Rubik Iso", "Courier New", "Courier", "monospace";
+  font-size: 4.5rem;
+  color: #ffde00;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-text {
+  color: #3c3c3c;
+  font-size: 0.9rem;
+}
+
+.botones {
+  padding: 0.5em;
+  width: 60px;
+  height: 60px;
+  background-color: #465464;
+  border-radius: 100%;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  transition: all 0.2s ease;
+  position: fixed;
+  top: 50%;
+}
+
+.tarjeta {
+  background-color: #f2f2f2;
+  cursor: pointer;
+  height: 130px;
+  box-shadow: 6px 7px 0px #465464;
+  transition: all 0.25s ease;
+  border-radius: 10px;
+}
+
+.tarjeta:hover {
+  box-shadow: 7px 8px 0px #2bac88;
+  transform: scale(1.11);
+  z-index: 100;
+}
+
+.boton1 {
+  left: 1rem;
+}
+
+.boton2 {
+  right: 1rem;
+}
+
+.botones:hover {
+  background-color: #6f7479;
+  transform: scale(1.05);
+}
+
+.hide {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.modal-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.datos {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.imgmodal {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+li {
+  padding-right: 40px;
+}
+
+.btnCerrar{
+    background-color: #2bac88;
+    color: white;
+}
+
+.btnCerrar:hover{
+    background-color: #1b7a5f;
+    color: white;
+}
+
+.skeletonGroup{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.skeleton{
+  border-radius: 15px;
+  height: 130px;
+  max-width: 30%;
+  min-width: 30%;
+  margin: 1rem 0;
+  padding: 1rem;
+  opacity: .5;
+  background-color: #465464;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  place-self: center;
+}
+
+.skeleton__img{
+  grid-row: 1/-1;
+  grid-column: 1/2;
+}
